@@ -1,0 +1,4 @@
+WEBSITE FUNKTIONIERT
+Website ist nicht mehr Hardcoded, sondern speichert die Daten in extra Text Dateien
+Muss noch kleine Sachen optimieren
+ganze Tag nur an der Seite gearbeitet
