@@ -14,7 +14,7 @@ class RenderList
             $subItems = explode('#', $line);
             $mainItem = array_shift($subItems);
             echo '<li>' . $mainItem . '<ul style="margin-left: -200px">';
-
+//          TODO: Render no child-ul when no subItems exist
             foreach ($subItems as $subItem) {
                 echo '<li>' . $subItem . '</li>';
             }
