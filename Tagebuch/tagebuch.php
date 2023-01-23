@@ -164,8 +164,8 @@
         $files = $fileService->readFolder();
         foreach ($files as $filename => $fileContent) {
             $header = $fileService->cleanUpFileName($filename);
-            Render::header($header);
-            Render::content($fileContent);
+            RenderList::header($header);
+            RenderList::content($fileContent);
         }
         ?>
     </div>

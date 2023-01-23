@@ -1,6 +1,6 @@
 <?php
 
-class Render
+class RenderList
 {
     public static function header(string $name): void
     {
