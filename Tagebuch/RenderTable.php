@@ -11,9 +11,27 @@ class RenderTable
     {
         $t = "\t";
         echo PHP_EOL;
+        echo '<table>' . PHP_EOL;
 
         /*  Header  */
-        echo '<table>' . PHP_EOL;
+        self::renderTableHead();
+
+        /*  Body    */
+        echo $t . '<tbody>' . PHP_EOL;
+
+        $count = count($content);
+        foreach ($content as $key => $line) {
+            self::renderTableRow($line, $key, $count, $day);
+        }
+
+        echo $t . '</tbody>' . PHP_EOL;
+        echo '</table>' . PHP_EOL;
+    }
+
+    private static function renderTableHead(): void
+    {
+        $t = "\t";
+
         echo $t . '<thead>' . PHP_EOL;
         echo $t . $t . '<tr>' . PHP_EOL;
 
@@ -23,25 +41,21 @@ class RenderTable
 
         echo $t . $t . '</tr>' . PHP_EOL;
         echo $t . '</thead>' . PHP_EOL;
+    }
 
-        /*  Body    */
-        echo $t . '<tbody>' . PHP_EOL;
+    private static function renderTableRow($line, $key, $count, $day): void
+    {
+        $t = "\t";
 
-        $count = count($content);
-        foreach ($content as $key => $line) {
-            echo $t . $t . '<tr>' . PHP_EOL;
-            $subItems = explode('#', $line);
-            $mainItem = array_shift($subItems);
+        echo $t . $t . '<tr>' . PHP_EOL;
+        $subItems = explode('#', $line);
+        $mainItem = array_shift($subItems);
 
-            if ($key === 0){
-                echo $t . $t . $t . '<td rowspan="' . $count . '">' . $day . '</td>' . PHP_EOL;
-            }
-
-            echo $t . $t . $t . '<td>' . $mainItem . '</td>' . PHP_EOL;
-            echo $t . $t . '</tr>' . PHP_EOL;
+        if ($key === 0){
+            echo $t . $t . $t . '<td rowspan="' . $count . '">' . $day . '</td>' . PHP_EOL;
         }
 
-        echo $t . '</tbody>' . PHP_EOL;
-        echo '</table>' . PHP_EOL;
+        echo $t . $t . $t . '<td>' . $mainItem . '</td>' . PHP_EOL;
+        echo $t . $t . '</tr>' . PHP_EOL;
     }
 }
