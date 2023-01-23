@@ -33,11 +33,6 @@ class FileService{
                 $files[$filename] = $fileContent;
             }
         }
-//        Key und Value (Name und Inhalt) werden getauscht, um nach value sortiert zu werden
-//        TODO: fix sorting
-//        $files = array_flip($files);
-//        natsort($files);
-//        return array_flip($files);
         return $files;
     }
 
