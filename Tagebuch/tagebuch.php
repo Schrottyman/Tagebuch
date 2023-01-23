@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="Stylesheet.css">
-    <link rel="icon" href="images/icons8-lesezeichen-16.png">
+    <link rel="icon" href="favicon.png">
     <title>Praktikum Protokoll</title>
 
     <script>
