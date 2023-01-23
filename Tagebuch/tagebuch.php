@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <?php
-    //  TODO: Textfeld ist doof
-    //  TODO: Unterpunkt
-    ?>
-
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="Stylesheet.css">
@@ -42,7 +36,6 @@
 
         //  Guckt welcher Tag es ist, um auf der Website den Stand des Praktikum anzuzeigen
         function heuteIstTag() {
-            console.log(day);
             const date = new Date();
             switch (date.getDate()) {
                 case 16:
@@ -164,8 +157,11 @@
         $files = $fileService->readFolder();
         foreach ($files as $filename => $fileContent) {
             $header = $fileService->cleanUpFileName($filename);
-            RenderList::header($header);
-            RenderList::content($fileContent);
+//            TODO: Nutzer kann zwischen Table und Liste wechseln.
+            /*RenderList::header($header);
+            RenderList::content($fileContent);*/
+            RenderTable::header($header);
+            RenderTable::content($header, $fileContent);
         }
         ?>
     </div>

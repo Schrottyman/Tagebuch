@@ -127,6 +127,21 @@ li {
     text-align: center
 }
 
+table {
+    box-shadow: 0px 0px 10px #ccc;
+    border-radius: 8px;
+}
+
+table th {
+    background-color: #3500d2;
+    color: white;
+    border: #FFFFFF 1px solid;
+}
+
+table td {
+    border: #FFFFFF 1px solid;
+}
+
  /* Center the loader */
 #loader {
     position: absolute;
