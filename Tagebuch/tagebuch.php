@@ -152,18 +152,44 @@
         </div>
     </form>
 
+    <script>
+        function toggleView(){
+            const table = document.getElementById("tableView");
+            const list = document.getElementById("listView");
+
+            if(table.style.display === "none" && list.style.display === "block") {
+                table.style.display = "block";
+                list.style.display = "none";
+            } else {
+                table.style.display = "none";
+                list.style.display = "block";
+            }
+        }
+    </script>
+    <button class="button sticky" onclick="toggleView()">Toggle View</button>
+
     <div>
         <?php
-        $files = $fileService->readFolder();
-        foreach ($files as $filename => $fileContent) {
-            $header = $fileService->cleanUpFileName($filename);
-//            TODO: Nutzer kann zwischen Table und Liste wechseln.
-            /*RenderList::header($header);
-            RenderList::content($fileContent);*/
-            RenderTable::header($header);
-            RenderTable::content($header, $fileContent);
-        }
+            $files = $fileService->readFolder();
         ?>
+        <div id="listView" style="display: block">
+            <?php
+                foreach ($files as $filename => $fileContent) {
+                    $header = $fileService->cleanUpFileName($filename);
+                    RenderList::header($header);
+                    RenderList::content($fileContent);
+                }
+            ?>
+        </div>
+        <div id="tableView" style="display: none">
+            <?php
+                foreach ($files as $filename => $fileContent) {
+                    $header = $fileService->cleanUpFileName($filename);
+                    RenderTable::header($header);
+                    RenderTable::content($header, $fileContent);
+                }
+            ?>
+        </div>
     </div>
 </div>
 </body>

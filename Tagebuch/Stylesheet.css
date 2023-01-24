@@ -142,6 +142,20 @@ table td {
     border: #FFFFFF 1px solid;
 }
 
+.sticky {
+    position: fixed;
+    top: 90%;
+    left: 90%;
+    background-color: #F87060;
+    color: #FFFFFF;
+    border: 2px solid #282828;
+}
+
+.sticky:hover {
+    background-color: #FFFFFF;
+    color: black;
+}
+
  /* Center the loader */
 #loader {
     position: absolute;
