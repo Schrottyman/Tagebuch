@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="Stylesheet.css">
     <link rel="icon" href="favicon.png">
+
+    <link rel="stylesheet/less" type="text/css" href="styles.less" />
+    <script src="https://cdn.jsdelivr.net/npm/less" ></script>
     <title>Praktikum Protokoll</title>
 
     <script>
