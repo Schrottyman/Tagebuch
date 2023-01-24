@@ -79,15 +79,16 @@ class RenderTable
         }
 
         echo $t . $t . $t . '<td class="Hauptpunkt"' . $rowspanAttribute . '>' . $mainItem . '</td>' . PHP_EOL;
-
-        foreach ($subItems as $subKey => $subItem){
-            if ($subKey !== 0){
-                echo $t . $t . '</tr>' . PHP_EOL;
-                echo $t . $t . '<tr>' . PHP_EOL;
+        if ($rowspanMain === 0){
+            echo $t . $t . $t . '<td class="Unterpunkt"> / </td>' . PHP_EOL;
+        } else {
+            foreach ($subItems as $subKey => $subItem){
+                if ($subKey !== 0){
+                    echo $t . $t . '</tr>' . PHP_EOL;
+                    echo $t . $t . '<tr>' . PHP_EOL;
+                }
+                echo $t . $t . $t . '<td class="Unterpunkt">' . str_replace(PHP_EOL, '', $subItem) . '</td>' . PHP_EOL;
             }
-
-            echo $t . $t . $t . '<td class="Unterpunkt">' . str_replace(PHP_EOL, '', $subItem) . '</td>' . PHP_EOL;
-
         }
 
         echo $t . $t . '</tr>' . PHP_EOL;
