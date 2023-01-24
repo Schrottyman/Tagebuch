@@ -30,7 +30,13 @@ class RenderTable
     {
         $count = 0;
         foreach ($content as $line) {
-            $count += substr_count($line, '#');
+            $subCount = substr_count($line, '#');
+
+            if ($subCount === 0) {
+                $subCount = 1;
+            }
+
+            $count += $subCount;
         }
         return $count;
     }
