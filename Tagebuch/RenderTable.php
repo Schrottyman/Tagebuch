@@ -65,18 +65,22 @@ class RenderTable
         $subItems = explode('#', $line);
         $mainItem = array_shift($subItems);
 
-        if ($key === 0){
+        if ($key === 0) {
             echo $t . $t . $t . '<td class="Tag" rowspan="' . $rowspanDay . '">' . $day . '</td>' . PHP_EOL;
         }
 
         $count = count($subItems);
         $rowspanMain = $count;
 
-        foreach ($subItems as $subKey => $subItem){
-            if ($subKey === 0) {
-                echo $t . $t . $t . '<td class="Hauptpunkt" rowspan="' . $rowspanMain . '">' . $mainItem . '</td>' . PHP_EOL;
-            }
 
+        $rowspanAttribute = '';
+        if($rowspanMain !== 0){
+            $rowspanAttribute = ' rowspan="' . $rowspanMain . '"';
+        }
+
+        echo $t . $t . $t . '<td class="Hauptpunkt"' . $rowspanAttribute . '>' . $mainItem . '</td>' . PHP_EOL;
+
+        foreach ($subItems as $subKey => $subItem){
             if ($subKey !== 0){
                 echo $t . $t . '</tr>' . PHP_EOL;
                 echo $t . $t . '<tr>' . PHP_EOL;
