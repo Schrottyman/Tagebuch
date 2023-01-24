@@ -13,13 +13,16 @@ class RenderList
         foreach ($content as $line) {
             $subItems = explode('#', $line);
             $mainItem = array_shift($subItems);
-            echo '<li>' . $mainItem . '<ul style="margin-left: -200px">';
-//          TODO: Render no child-ul when no subItems exist
-            foreach ($subItems as $subItem) {
-                echo '<li>' . $subItem . '</li>';
-            }
+            echo '<li>' . $mainItem;
+            if (str_contains($line, '#')) {
+                echo '<ul style="margin-left: -200px">';
 
-            echo '</ul>' . '</li>';
+                foreach ($subItems as $subItem) {
+                    echo '<li>' . $subItem . '</li>';
+                }
+                echo '</ul>';
+            }
+            echo '</li>';
         }
         echo '</ul>';
     }
