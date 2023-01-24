@@ -157,14 +157,22 @@
             const table = document.getElementById("tableView");
             const list = document.getElementById("listView");
 
-            if(table.style.display === "none" && list.style.display === "block") {
-                table.style.display = "block";
-                list.style.display = "none";
+            const listTransitionView = document.getElementsByClassName("listTransitionView");
+            const tableTransitionView = document.getElementsByClassName("tableTransitionView");
+
+            if(table.style.visibility === 'hidden' && list.style.visibility === 'visible') {
+                table.style.visibility = 'visible';
+                list.style.visibility = 'hidden';
+                tableTransitionView[0].style.opacity = '1';
+                listTransitionView[0].style.opacity = '0';
             } else {
-                table.style.display = "none";
-                list.style.display = "block";
+                table.style.visibility = 'hidden';
+                list.style.visibility = 'visible';
+                tableTransitionView[0].style.opacity = '0';
+                listTransitionView[0].style.opacity = '1';
             }
         }
+
     </script>
     <button class="button sticky" onclick="toggleView()">Toggle View</button>
 
@@ -172,7 +180,7 @@
         <?php
             $files = $fileService->readFolder();
         ?>
-        <div id="listView" style="display: block">
+        <div id="listView" class="listTransitionView" style="visibility: visible; opacity: 1;">
             <?php
                 foreach ($files as $filename => $fileContent) {
                     $header = $fileService->cleanUpFileName($filename);
@@ -181,7 +189,7 @@
                 }
             ?>
         </div>
-        <div id="tableView" style="display: none">
+        <div id="tableView" class="tableTransitionView" style="visibility: hidden; opacity: 0;">
             <?php
                 foreach ($files as $filename => $fileContent) {
                     $header = $fileService->cleanUpFileName($filename);

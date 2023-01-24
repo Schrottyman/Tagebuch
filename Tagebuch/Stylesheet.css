@@ -146,6 +146,7 @@ table td {
     position: fixed;
     top: 90%;
     left: 90%;
+    z-index: 999999;
     background-color: #F87060;
     color: #FFFFFF;
     border: 2px solid #282828;
@@ -204,4 +205,24 @@ table td {
 #Protokoll {
     display: none;
     text-align: center;
+}
+
+#tableView {
+    visibility: hidden;
+    position: absolute;
+}
+
+#listView {
+    visibility: visible;
+    position: absolute;
+}
+
+.listTransitionView {
+    opacity: 1;
+    transition-duration: 2s;
+}
+
+.tableTransitionView {
+    opacity: 0;
+    transition-duration: 2s;
 }
