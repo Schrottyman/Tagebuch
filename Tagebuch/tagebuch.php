@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="favicon.png">
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link href="/dist/output.css" rel="stylesheet">
     <title>Praktikum Protokoll</title>
 
     <script>
@@ -85,7 +85,7 @@
         }
     </script>
 </head>
-<body id="body" onload="Laden(), heuteIstTag()">
+<body id="body" onload="Laden(), heuteIstTag()" class="">
 
 <!--    Der Ladekreis    -->
 <div id="loader"></div>

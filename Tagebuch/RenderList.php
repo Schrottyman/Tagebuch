@@ -15,7 +15,7 @@ class RenderList
             $mainItem = array_shift($subItems);
             echo '<li>' . $mainItem;
             if (str_contains($line, '#')) {
-                echo '<ul style="margin-left: -200px">';
+                echo '<ul>';
 
                 foreach ($subItems as $subItem) {
                     echo '<li>' . $subItem . '</li>';
