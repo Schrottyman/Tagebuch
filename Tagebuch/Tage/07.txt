@@ -1,0 +1,4 @@
+Button zum Wechseln zwischen List View und Table View
+Transition beim Wechsel hinzugefügt
+Table View funktioniert komplett
+Anstelle von .css benutze ich jetzt .less#doch nicht, ich benutze Tailwind
