@@ -9,7 +9,6 @@ class RenderTable
 
     public static function content(string $day, array $content): void
     {
-        $t = "\t";
         echo PHP_EOL;
         echo '<table>' . PHP_EOL;
 
@@ -17,13 +16,13 @@ class RenderTable
         self::renderTableHead();
 
         /*  Body    */
-        echo $t . '<tbody>' . PHP_EOL;
+        echo '<tbody>' . PHP_EOL;
         $count = self::countSubItems($content);
         foreach ($content as $key => $line) {
             self::renderTableRow($line, $key, $count, $day);
         }
 
-        echo $t . '</tbody>' . PHP_EOL;
+        echo '</tbody>' . PHP_EOL;
         echo '</table>' . PHP_EOL;
     }
     private static function countSubItems(array $content): int
@@ -43,30 +42,27 @@ class RenderTable
 
     private static function renderTableHead(): void
     {
-        $t = "\t";
+        echo '<thead>' . PHP_EOL;
+        echo '<tr>' . PHP_EOL;
 
-        echo $t . '<thead>' . PHP_EOL;
-        echo $t . $t . '<tr>' . PHP_EOL;
+        echo '<th>' . 'Tage' . '</th>' . PHP_EOL;
+        echo '<th>' . 'Stichpunkte' . '</th>' . PHP_EOL;
+        echo '<th>' . 'Unterpunkte' . '</th>' . PHP_EOL;
 
-        echo $t . $t . $t . '<th>' . 'Tage' . '</th>' . PHP_EOL;
-        echo $t . $t . $t . '<th>' . 'Stichpunkte' . '</th>' . PHP_EOL;
-        echo $t . $t . $t . '<th>' . 'Unterpunkte' . '</th>' . PHP_EOL;
-
-        echo $t . $t . '</tr>' . PHP_EOL;
-        echo $t . '</thead>' . PHP_EOL;
+        echo '</tr>' . PHP_EOL;
+        echo '</thead>' . PHP_EOL;
     }
 
     private static function renderTableRow($line, $key, $count, $day): void
     {
-        $t = "\t";
         $rowspanDay = $count;
 
-        echo $t . $t . '<tr>' . PHP_EOL;
+        echo '<tr>' . PHP_EOL;
         $subItems = explode('#', $line);
         $mainItem = array_shift($subItems);
 
         if ($key === 0) {
-            echo $t . $t . $t . '<td class="Tag" rowspan="' . $rowspanDay . '">' . $day . '</td>' . PHP_EOL;
+            echo '<td class="Tag" rowspan="' . $rowspanDay . '">' . $day . '</td>' . PHP_EOL;
         }
 
         $count = count($subItems);
@@ -78,19 +74,19 @@ class RenderTable
             $rowspanAttribute = ' rowspan="' . $rowspanMain . '"';
         }
 
-        echo $t . $t . $t . '<td class="Hauptpunkt"' . $rowspanAttribute . '>' . $mainItem . '</td>' . PHP_EOL;
+        echo '<td class="Hauptpunkt"' . $rowspanAttribute . '>' . $mainItem . '</td>' . PHP_EOL;
         if ($rowspanMain === 0){
-            echo $t . $t . $t . '<td class="Unterpunkt"> / </td>' . PHP_EOL;
+            echo '<td class="Unterpunkt"> / </td>' . PHP_EOL;
         } else {
             foreach ($subItems as $subKey => $subItem){
                 if ($subKey !== 0){
-                    echo $t . $t . '</tr>' . PHP_EOL;
-                    echo $t . $t . '<tr>' . PHP_EOL;
+                    echo '</tr>' . PHP_EOL;
+                    echo '<tr>' . PHP_EOL;
                 }
-                echo $t . $t . $t . '<td class="Unterpunkt">' . str_replace(PHP_EOL, '', $subItem) . '</td>' . PHP_EOL;
+                echo '<td class="Unterpunkt">' . str_replace(PHP_EOL, '', $subItem) . '</td>' . PHP_EOL;
             }
         }
 
-        echo $t . $t . '</tr>' . PHP_EOL;
+        echo '</tr>' . PHP_EOL;
     }
 }
