@@ -10,7 +10,7 @@ class RenderTable
     public static function content(string $day, array $content): void
     {
         echo PHP_EOL;
-        echo '<table>' . PHP_EOL;
+        echo '<table class="center">' . PHP_EOL;
 
         /*  Header  */
         self::renderTableHead();
