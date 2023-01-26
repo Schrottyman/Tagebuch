@@ -9,13 +9,13 @@ class RenderList
 
     public static function content(array $content): void
     {
-        echo '<ul>';
+        echo '<ul class="space-y-2 list-disc list-inside">';
         foreach ($content as $line) {
             $subItems = explode('#', $line);
             $mainItem = array_shift($subItems);
             echo '<li>' . $mainItem;
             if (str_contains($line, '#')) {
-                echo '<ul>';
+                echo '<ul class="pl-7 mt-2 space-y-1 list-disc list-inside">';
 
                 foreach ($subItems as $subItem) {
                     echo '<li>' . $subItem . '</li>';
