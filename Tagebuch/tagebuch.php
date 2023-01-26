@@ -58,11 +58,11 @@
             }
         </script>
     </head>
-    <body id="body" onload="heuteIstTag()" class="bg-orange-300 text-gray-800 font-mono">
+    <body id="body" onload="heuteIstTag()" class="bg-gradient-to-r from-orange-300 to-red-500 text-gray-800 text-lg font-mono overflow-x-hidden">
 
-        <header class="bg-gray-800 w-auto p-5 rounded-b-full text-center text-orange-300">
-            <h1 class="font-extrabold leading-tight text-8xl mt-0 mb-2 ">Praktikum SMF</h1>
-            <p class="font-bold text-lg">von Timo</p>
+        <header class="bg-gray-800 w-auto py-5 rounded-b-full text-center text-orange-300">
+            <h1 class="bg-gradient-to-r w-screen from-orange-300 to-red-500 bg-clip-text text-transparent font-extrabold leading-tight text-8xl mt-0 mb-2 ">Praktikum SMF</h1>
+            <p class="bg-gradient-to-r w-screen from-orange-300 to-red-500 bg-clip-text text-transparent font-bold text-lg">von Timo</p>
         </header>
 
         <main class="m-auto w-4/5">
@@ -86,7 +86,6 @@
 
             //      Es wird der Ordner "Tage" überprüft
             $fileService->checkDir();
-
             //      Wenn der Tag ausgewählt und das Textfeld beschrieben wurde, dann wird in die jeweilige Textdatei geschrieben
             if (array_key_exists("day", $_POST) && array_key_exists("stichpunkt", $_POST)) {
                 $fileService->write($_POST["day"], $_POST["stichpunkt"]);
@@ -95,7 +94,7 @@
 
             <!--   Das Formular     -->
             <form action="tagebuch.php" method="post">
-                <select class="block bg-white text-center text-gray-900 font-bold text-m p-4 rounded-t-xl focus:ring-blue-500 focus:border-blue-500
+                <select class="block bg-white text-center text-gray-900 font-bold text-m p-4 rounded-t-xl focus:ring-blue-500 focus:border-blue-500"
                         name="day" id="day" required>
                     <optgroup class=" text-center" label="Woche 1">
                         <option class="" value="1">Tag 1</option>
@@ -114,11 +113,11 @@
                 </select>
 
                 <textarea
-                        class="rounded-r-xl block p-2.5 text-gray-900 bg-white w-full focus:ring-blue-500 focus:border-blue-500 font-bold text-3xl"
+                        class="rounded-tr-xl rounded-bl-xl block p-2.5 text-gray-900 bg-white w-full font-bold text-xl caret-pink-500"
                         id="TextArea" name="stichpunkt" placeholder="Überpunkt&#10Unterpunkt&#10Unterpunkt" rows="5"
                         cols="50" required></textarea>
 
-                <input class="bg-white hover:bg-gray-100 text-gray-800 font-semibold rounded-b-xl shadow text-center text-m p-4"
+                <input class="bg-white hover:bg-gray-100 text-gray-800 font-semibold rounded-b-xl shadow text-center text-m p-4 float-right"
                        type="submit" value="Schreiben">
 
             </form>
@@ -128,24 +127,18 @@
                     const table = document.getElementById("tableView");
                     const list = document.getElementById("listView");
 
-                    const listTransitionView = document.getElementsByClassName("listTransitionView");
-                    const tableTransitionView = document.getElementsByClassName("tableTransitionView");
-
-                    if (table.style.visibility === 'hidden' && list.style.visibility === 'visible') {
-                        table.style.visibility = 'visible';
-                        list.style.visibility = 'hidden';
-                        tableTransitionView[0].style.opacity = '1';
-                        listTransitionView[0].style.opacity = '0';
+                    if (table.style.display === 'none' && list.style.display === 'block') {
+                        table.style.display = 'block';
+                        list.style.display = 'none';
                     } else {
-                        table.style.visibility = 'hidden';
-                        list.style.visibility = 'visible';
-                        tableTransitionView[0].style.opacity = '0';
-                        listTransitionView[0].style.opacity = '1';
+                        table.style.display = 'none';
+                        list.style.display = 'block';
                     }
                 }
 
             </script>
-            <button class="fixed bottom-10 right-10 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            <button class="fixed bottom-10 right-10 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow
+                            transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-sky-500 duration-200"
                     onclick="toggleView()">Toggle View
             </button>
 
@@ -154,7 +147,7 @@
                 <?php
                 $files = $fileService->readFolder();
                 ?>
-                <div id="listView" class="listTransitionView" style="visibility: visible; opacity: 1;">
+                <div id="listView" class="" style="display: block;">
                     <?php
                     foreach ($files as $filename => $fileContent) {
                         $header = $fileService->cleanUpFileName($filename);
@@ -163,7 +156,7 @@
                     }
                     ?>
                 </div>
-                <div id="tableView" class="tableTransitionView" style="visibility: hidden; opacity: 0;">
+                <div id="tableView" class="" style="display: none;">
                     <?php
                     foreach ($files as $filename => $fileContent) {
                         $header = $fileService->cleanUpFileName($filename);

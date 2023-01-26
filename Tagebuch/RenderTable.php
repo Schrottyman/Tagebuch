@@ -4,13 +4,13 @@ class RenderTable
 {
     public static function header(string $name): void
     {
-        echo '<h2>' . 'Tag ' . $name . '</h2>';
+        echo '<h2 class="font-extrabold text-4xl underline my-6">' . 'Tag ' . $name . '</h2>';
     }
 
     public static function content(string $day, array $content): void
     {
         echo PHP_EOL;
-        echo '<table class="center">' . PHP_EOL;
+        echo '<table class="table-auto border-collapse border border-slate-500 w-full text-center m-auto">' . PHP_EOL;
 
         /*  Header  */
         self::renderTableHead();
@@ -45,9 +45,9 @@ class RenderTable
         echo '<thead>' . PHP_EOL;
         echo '<tr>' . PHP_EOL;
 
-        echo '<th>' . 'Tage' . '</th>' . PHP_EOL;
-        echo '<th>' . 'Stichpunkte' . '</th>' . PHP_EOL;
-        echo '<th>' . 'Unterpunkte' . '</th>' . PHP_EOL;
+        echo '<th class="border border-slate-600 bg-gray-200">' . 'Tag' . '</th>' . PHP_EOL;
+        echo '<th class="border border-slate-600 bg-gray-200">' . 'Stichpunkte' . '</th>' . PHP_EOL;
+        echo '<th class="border border-slate-600 bg-gray-200">' . 'Unterpunkte' . '</th>' . PHP_EOL;
 
         echo '</tr>' . PHP_EOL;
         echo '</thead>' . PHP_EOL;
@@ -62,7 +62,7 @@ class RenderTable
         $mainItem = array_shift($subItems);
 
         if ($key === 0) {
-            echo '<td class="Tag" rowspan="' . $rowspanDay . '">' . $day . '</td>' . PHP_EOL;
+            echo '<td class="border border-slate-600 bg-gray-400" rowspan="' . $rowspanDay . '">' . $day . '</td>' . PHP_EOL;
         }
 
         $count = count($subItems);
@@ -74,16 +74,16 @@ class RenderTable
             $rowspanAttribute = ' rowspan="' . $rowspanMain . '"';
         }
 
-        echo '<td class="Hauptpunkt"' . $rowspanAttribute . '>' . $mainItem . '</td>' . PHP_EOL;
+        echo '<td class="border border-slate-600 bg-gray-400"' . $rowspanAttribute . '>' . $mainItem . '</td>' . PHP_EOL;
         if ($rowspanMain === 0){
-            echo '<td class="Unterpunkt"> / </td>' . PHP_EOL;
+            echo '<td class="border border-slate-600 bg-gray-400"> / </td>' . PHP_EOL;
         } else {
             foreach ($subItems as $subKey => $subItem){
                 if ($subKey !== 0){
                     echo '</tr>' . PHP_EOL;
                     echo '<tr>' . PHP_EOL;
                 }
-                echo '<td class="Unterpunkt">' . str_replace(PHP_EOL, '', $subItem) . '</td>' . PHP_EOL;
+                echo '<td class="border border-slate-600 bg-gray-400">' . str_replace(PHP_EOL, '', $subItem) . '</td>' . PHP_EOL;
             }
         }
 

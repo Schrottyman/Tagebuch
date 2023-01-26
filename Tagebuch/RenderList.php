@@ -4,7 +4,7 @@ class RenderList
 {
     public static function header(string $name): void
     {
-        echo '<h2>' . 'Tag ' . $name . '</h2>';
+        echo '<h2 class="font-extrabold text-4xl underline my-6">' . 'Tag ' . $name . '</h2>';
     }
 
     public static function content(array $content): void
