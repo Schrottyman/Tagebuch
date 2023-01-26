@@ -9,25 +9,24 @@ class RenderTable
 
     public static function content(string $day, array $content): void
     {
+        $count = self::countSubItems($content);
+
         echo PHP_EOL;
-        echo '<table class="table-auto border-collapse border border-slate-500 w-full text-center m-auto">' . PHP_EOL;
+        echo "<div class='inline-grid grid-cols-3 w-full border border-black place-items-center'>" . PHP_EOL;
 
         /*  Header  */
         self::renderTableHead();
 
         /*  Body    */
-        echo '<tbody>' . PHP_EOL;
-        $count = self::countSubItems($content);
         foreach ($content as $key => $line) {
             self::renderTableRow($line, $key, $count, $day);
         }
 
-        echo '</tbody>' . PHP_EOL;
-        echo '</table>' . PHP_EOL;
+        echo '</div>' . PHP_EOL;
     }
     private static function countSubItems(array $content): int
     {
-        $count = 0;
+        $count = 1;
         foreach ($content as $line) {
             $subCount = substr_count($line, '#');
 
@@ -42,27 +41,20 @@ class RenderTable
 
     private static function renderTableHead(): void
     {
-        echo '<thead>' . PHP_EOL;
-        echo '<tr>' . PHP_EOL;
-
-        echo '<th class="border border-slate-600 bg-gray-200">' . 'Tag' . '</th>' . PHP_EOL;
-        echo '<th class="border border-slate-600 bg-gray-200">' . 'Stichpunkte' . '</th>' . PHP_EOL;
-        echo '<th class="border border-slate-600 bg-gray-200">' . 'Unterpunkte' . '</th>' . PHP_EOL;
-
-        echo '</tr>' . PHP_EOL;
-        echo '</thead>' . PHP_EOL;
+        echo '<div class="text-center">' . 'Tag' . '</div>' . PHP_EOL;
+        echo '<div class=text-center"">' . 'Stichpunkte' . '</div>' . PHP_EOL;
+        echo '<div class="text-center">' . 'Unterpunkte' . '</div>' . PHP_EOL;
     }
 
     private static function renderTableRow($line, $key, $count, $day): void
     {
-        $rowspanDay = $count;
+        $rowspanDay = $count + 1;
 
-        echo '<tr>' . PHP_EOL;
         $subItems = explode('#', $line);
         $mainItem = array_shift($subItems);
 
         if ($key === 0) {
-            echo '<td class="border border-slate-600 bg-gray-400" rowspan="' . $rowspanDay . '">' . $day . '</td>' . PHP_EOL;
+            echo "<div style='grid-row-end: {$rowspanDay}' class='row-start-2 '>" . $day . '</div>' . PHP_EOL;
         }
 
         $count = count($subItems);
@@ -74,19 +66,15 @@ class RenderTable
             $rowspanAttribute = ' rowspan="' . $rowspanMain . '"';
         }
 
-        echo '<td class="border border-slate-600 bg-gray-400"' . $rowspanAttribute . '>' . $mainItem . '</td>' . PHP_EOL;
+        echo '<div style="grid-row: span '.$rowspanMain.'" class=""' . $rowspanAttribute . '>' . $mainItem . '</div>' . PHP_EOL;
         if ($rowspanMain === 0){
-            echo '<td class="border border-slate-600 bg-gray-400"> / </td>' . PHP_EOL;
+            echo '<div class=""> / </div>' . PHP_EOL;
         } else {
             foreach ($subItems as $subKey => $subItem){
                 if ($subKey !== 0){
-                    echo '</tr>' . PHP_EOL;
-                    echo '<tr>' . PHP_EOL;
                 }
-                echo '<td class="border border-slate-600 bg-gray-400">' . str_replace(PHP_EOL, '', $subItem) . '</td>' . PHP_EOL;
+                echo '<div class="">' . str_replace(PHP_EOL, '', $subItem) . '</div>' . PHP_EOL;
             }
         }
-
-        echo '</tr>' . PHP_EOL;
     }
 }
