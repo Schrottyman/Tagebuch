@@ -70,6 +70,9 @@
                 <a href="../TagebuchV3/TagebuchV3.php"><p>Version 3</p></a>
                 <a href="../TagebuchTailwind/tagebuchTailwind.php"><p>Tailwind</p></a>
             </nav>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="relative w-6 h-6 fill-orange-400 mx-auto animate-bounce -top-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75L12 3m0 0l3.75 3.75M12 3v18" />
+            </svg>
 
             <h1 class="bg-gradient-to-r w-screen from-orange-300 to-red-500 bg-clip-text text-transparent font-extrabold leading-tight text-8xl mt-0 mb-2 ">Praktikum SMF</h1>
             <p class="bg-gradient-to-r w-screen from-orange-300 to-red-500 bg-clip-text text-transparent font-bold text-lg">von Timo</p>
