@@ -4,7 +4,7 @@ class RenderTable
 {
     public static function header(string $name): void
     {
-        echo '<h2 class="font-extrabold text-4xl underline my-6">' . 'Tag ' . $name . '</h2>';
+        echo '<h2 class="font-extrabold text-4xl underline my-6 drop-shadow-lg">' . 'Tag ' . $name . '</h2>';
     }
 
     public static function content(string $day, array $content): void
@@ -12,7 +12,7 @@ class RenderTable
         $count = self::countSubItems($content);
 
         echo PHP_EOL;
-        echo "<div class='inline-grid grid-cols-3 w-full border-4 border-gray-800 drop-shadow-lg'>" . PHP_EOL;
+        echo "<div class='inline-grid grid-cols-3 w-full border-4 border-gray-800 drop-shadow-lg rounded-lg'>" . PHP_EOL;
 
         /*  Header  */
         self::renderTableHead();
@@ -41,9 +41,9 @@ class RenderTable
 
     private static function renderTableHead(): void
     {
-        echo '<div class="text-center font-bold border-b-4 border-gray-800 w-full">' . 'Tag' . '</div>' . PHP_EOL;
-        echo '<div class="text-center font-bold border-b-4 border-gray-800 w-full">' . 'Stichpunkte' . '</div>' . PHP_EOL;
-        echo '<div class="text-center font-bold border-b-4 border-gray-800 w-full">' . 'Unterpunkte' . '</div>' . PHP_EOL;
+        echo '<div class="text-center font-extrabold border-b-4 border-gray-800 w-full">' . 'Tag' . '</div>' . PHP_EOL;
+        echo '<div class="text-center font-extrabold border-b-4 border-gray-800 w-full">' . 'Stichpunkte' . '</div>' . PHP_EOL;
+        echo '<div class="text-center font-extrabold border-b-4 border-gray-800 w-full">' . 'Unterpunkte' . '</div>' . PHP_EOL;
     }
 
     private static function renderTableRow($line, $key, $count, $day): void
@@ -54,7 +54,7 @@ class RenderTable
         $mainItem = array_shift($subItems);
 
         if ($key === 0) {
-            echo "<div style='grid-row-end: {$rowspanDay}' class='row-start-2 m-auto text-center'>" . $day . '</div>' . PHP_EOL;
+            echo "<div style='grid-row-end: {$rowspanDay}' class='row-start-2 m-auto text-center font-extrabold'>" . $day . '</div>' . PHP_EOL;
         }
 
         $count = count($subItems);
@@ -68,7 +68,7 @@ class RenderTable
 
         echo '<div style="grid-row: span '.$rowspanMain.'" class="border border-gray-800 border-l-2 text-center"' . $rowspanAttribute . '>' . $mainItem . '</div>' . PHP_EOL;
         if ($rowspanMain === 0){
-            echo '<div class="border border-gray-800 text-center"> / </div>' . PHP_EOL;
+            echo '<div class="border border-gray-800 text-center font-extrabold"> / </div>' . PHP_EOL;
         } else {
             foreach ($subItems as $subKey => $subItem){
                 if ($subKey !== 0){
