@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./Tagebuch/*.php"],
+  content: ["./TagebuchTailwind/*.php"],
   theme: {
     borderRadius: {
       'none': '0',

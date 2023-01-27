@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="'https://fonts.googleapis.com/css2?family=Fredoka+One">
+    <link rel="stylesheet" href="Stylesheet2.css">
+    <title>Praktikum Protokoll</title>
+
+    <script>
+
+        function lightMode() {
+            var body = document.getElementById("body")
+            body.style.backgroundColor = "#FFFFFF";
+            body.style.color = "#282828";
+        }
+
+        function DarkMode() {
+            var body = document.getElementById("body")
+            body.style.backgroundColor = "#0C0032FF";
+            body.style.color = "#FFFFFF";
+        }
+
+
+        function heuteIstTag() {
+            var day = "999";
+            console.log(day);
+            const date = new Date();
+            switch (date.getDate()) {
+                case 16:
+                    day = "1";
+                    break;
+                case 17:
+                    day = "2";
+                    break
+                case 18:
+                    day = "3";
+                    break;
+                case 19:
+                    day = "4";
+                    break;
+                case 20:
+                    day = "5";
+                    break;
+                case 23:
+                    day = "6";
+                    break;
+                case 24:
+                    day = "7";
+                    break;
+                case 25:
+                    day = "8";
+                    break;
+                case 26:
+                    day = "9";
+                    break;
+                case 27:
+                    day = "10";
+                    break;
+                default:
+                    day = "?";
+                    break;
+            }
+            console.log(day);
+            document.getElementById("heuteIst").innerHTML = day;
+        }
+    </script>
+
+</head>
+<body id="body" onload="Laden(), heuteIstTag()">
+
+<div id="loader"></div>
+
+<div style="display:none;" id="Protokoll" class="animate-bottom">
+
+    <h1 id="h1">Praktikum SMF</h1>
+    <button class="button button1" id="lightMode" onclick="lightMode()">Light Mode</button>
+    <button class="button button2" id="darkMode" onclick="DarkMode()">Dark Mode</button>
+    <p>
+        Heute ist Tag
+        <span id="heuteIst"> ??? </span>
+        von 10
+    </p>
+    <div>
+        <select class="test" name="day" id="day" required>
+            <optgroup label="Woche 1">
+                <option value="1">Tag 1</option>
+                <option value="2">Tag 2</option>
+                <option value="3">Tag 3</option>
+                <option value="4">Tag 4</option>
+                <option value="5">Tag 5</option>
+            </optgroup>
+            <optgroup label="Woche 2">
+                <option value="6">Tag 6</option>
+                <option value="7">Tag 7</option>
+                <option value="8">Tag 8</option>
+                <option value="9">Tag 9</option>
+                <option value="10">Tag 10</option>
+            </optgroup>
+        </select>
+    </div>
+    <div>
+            <textarea class="text">
+    </textarea>
+    </div>
+
+    <h2>Tag 1</h2>
+
+    <ul>
+        <li>Arbeiten mit eigenem Laptop am Schreibtisch</li>
+        <li>Zugeguckt bei einem Meeting
+            <ul>
+                <li>SMF hat Zugriff auf Daten von Tankstellen</li>
+                <li>Sie entwickeln eine Website, welche den Tankstellenbesitzern hilft</li>
+                <li>Man kann sehen, wie der Preis von anderen Tankstellen in der Nähe ist</li>
+                <li>Sie diskutierten über, Funktion, Fehler und Design</li>
+            </ul>
+        </li>
+        <li>12 Uhr Mittagessen</li>
+        <li>Danach mit HTML rumprobiert
+            <ul>
+                <li>Schneiderei-Meier Seite</li>
+                <li>Protokoll Seite mit Ladeanimation</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Tag 2</h2>
+
+    <ul>
+        <li>Weiterarbeiten an der Protokollseite
+            <ul>
+                <li>Light Mode Button</li>
+                <li>Dark Mode Button</li>
+                <li>Dynamische Tag Zahl</li>
+                <li>Idee von einem Formular</li>
+            </ul>
+        </li>
+
+    </ul>
+</div>
+
+<script>
+    let myVar;
+
+    function Laden() {
+        myVar = setTimeout(showPage, 3000);
+    }
+
+    function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("Protokoll").style.display = "block";
+    }
+</script>
+
+</body>
+</html>

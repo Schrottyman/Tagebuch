@@ -93,7 +93,7 @@
             ?>
 
             <!--   Das Formular     -->
-            <form action="tagebuch.php" method="post">
+            <form action="tagebuchTailwind.php" method="post">
                 <select class="block bg-white text-center text-gray-900 font-bold text-m p-4 rounded-t-xl focus:ring-blue-500 focus:border-blue-500"
                         name="day" id="day" required>
                     <optgroup class=" text-center" label="Woche 1">
