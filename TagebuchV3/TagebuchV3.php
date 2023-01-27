@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="favicon.png">
     <link rel="stylesheet" type="text/css" href="styles.css" />
-    <title>Praktikum Protokoll</title>
+    <title>Tagebuch Version 3</title>
 
     <script>
         //  Für den Ladekreis
@@ -94,6 +94,13 @@
 <div style="display:none;" id="Protokoll" class="animate-bottom">
 
     <h1>Praktikum SMF</h1>
+
+    <nav class="-translate-y-40 grid inline-grid grid-cols-4 gap-x-32 mt-10">
+        <a href="../TagebuchV1/tagebuch2.html"><p>Version 1</p></a>
+        <a href="../TagebuchV2/TagebuchV2.php"><p>Version 2</p></a>
+        <a href="../TagebuchV3/TagebuchV3.php"><p>Version 3</p></a>
+        <a href="../TagebuchTailwind/tagebuchTailwind.php"><p>Tailwind</p></a>
+    </nav>
 
     <!--    Light Mode und Dark Mode Knöpfe  -->
     <div>

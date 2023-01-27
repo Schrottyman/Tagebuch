@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="favicon.png">
         <link href="/dist/output.css" rel="stylesheet">
-        <title>Praktikum Protokoll</title>
+        <title>Tagebuch Tailwind</title>
         <script>
             //  Guckt welcher Tag es ist, um auf der Website den Stand des Praktikum anzuzeigen
             function heuteIstTag() {
@@ -60,7 +60,17 @@
     </head>
     <body id="body" onload="heuteIstTag()" class="bg-gradient-to-r from-orange-300 to-red-500 text-gray-800 text-lg font-mono overflow-x-hidden">
 
-        <header class="bg-gray-800 w-auto py-5 rounded-b-full text-center text-orange-300">
+
+
+
+        <header class="bg-gray-800 w-auto py-5 rounded-b-full text-center text-orange-300 hover:pt-40 duration-200">
+            <nav class="-translate-y-40 grid inline-grid grid-cols-4 gap-x-32 mt-10">
+                <a href="../TagebuchV1/tagebuch2.html"><p>Version 1</p></a>
+                <a href="../TagebuchV2/TagebuchV2.php"><p>Version 2</p></a>
+                <a href="../TagebuchV3/TagebuchV3.php"><p>Version 3</p></a>
+                <a href="../TagebuchTailwind/tagebuchTailwind.php"><p>Tailwind</p></a>
+            </nav>
+
             <h1 class="bg-gradient-to-r w-screen from-orange-300 to-red-500 bg-clip-text text-transparent font-extrabold leading-tight text-8xl mt-0 mb-2 ">Praktikum SMF</h1>
             <p class="bg-gradient-to-r w-screen from-orange-300 to-red-500 bg-clip-text text-transparent font-bold text-lg">von Timo</p>
         </header>
