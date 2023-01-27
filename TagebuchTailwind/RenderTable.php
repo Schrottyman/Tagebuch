@@ -12,7 +12,7 @@ class RenderTable
         $count = self::countSubItems($content);
 
         echo PHP_EOL;
-        echo "<div class='inline-grid grid-cols-3 w-full border border-black place-items-center'>" . PHP_EOL;
+        echo "<div class='inline-grid grid-cols-3 w-full border-4 border-gray-800 drop-shadow-lg'>" . PHP_EOL;
 
         /*  Header  */
         self::renderTableHead();
@@ -41,9 +41,9 @@ class RenderTable
 
     private static function renderTableHead(): void
     {
-        echo '<div class="text-center">' . 'Tag' . '</div>' . PHP_EOL;
-        echo '<div class=text-center"">' . 'Stichpunkte' . '</div>' . PHP_EOL;
-        echo '<div class="text-center">' . 'Unterpunkte' . '</div>' . PHP_EOL;
+        echo '<div class="text-center font-bold border-b-4 border-gray-800 w-full">' . 'Tag' . '</div>' . PHP_EOL;
+        echo '<div class="text-center font-bold border-b-4 border-gray-800 w-full">' . 'Stichpunkte' . '</div>' . PHP_EOL;
+        echo '<div class="text-center font-bold border-b-4 border-gray-800 w-full">' . 'Unterpunkte' . '</div>' . PHP_EOL;
     }
 
     private static function renderTableRow($line, $key, $count, $day): void
@@ -54,7 +54,7 @@ class RenderTable
         $mainItem = array_shift($subItems);
 
         if ($key === 0) {
-            echo "<div style='grid-row-end: {$rowspanDay}' class='row-start-2 '>" . $day . '</div>' . PHP_EOL;
+            echo "<div style='grid-row-end: {$rowspanDay}' class='row-start-2 m-auto text-center'>" . $day . '</div>' . PHP_EOL;
         }
 
         $count = count($subItems);
@@ -66,14 +66,14 @@ class RenderTable
             $rowspanAttribute = ' rowspan="' . $rowspanMain . '"';
         }
 
-        echo '<div style="grid-row: span '.$rowspanMain.'" class=""' . $rowspanAttribute . '>' . $mainItem . '</div>' . PHP_EOL;
+        echo '<div style="grid-row: span '.$rowspanMain.'" class="border border-gray-800 border-l-2 text-center"' . $rowspanAttribute . '>' . $mainItem . '</div>' . PHP_EOL;
         if ($rowspanMain === 0){
-            echo '<div class=""> / </div>' . PHP_EOL;
+            echo '<div class="border border-gray-800 text-center"> / </div>' . PHP_EOL;
         } else {
             foreach ($subItems as $subKey => $subItem){
                 if ($subKey !== 0){
                 }
-                echo '<div class="">' . str_replace(PHP_EOL, '', $subItem) . '</div>' . PHP_EOL;
+                echo '<div class="border border-gray-800 text-center">' . str_replace(PHP_EOL, '', $subItem) . '</div>' . PHP_EOL;
             }
         }
     }
